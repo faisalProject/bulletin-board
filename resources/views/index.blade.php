@@ -128,6 +128,7 @@
 
   <!-- Template Main JS File -->
   <script src="js/main.js"></script>
+  @include('sweetalert::alert')
 
 </body>
 

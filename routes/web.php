@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\LoginCT;
-use App\Http\Controllers\RegisterCT;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LoginCT::class, 'index']);
-Route::get('/register', [RegisterCT::class, 'index']);
+Route::get('/', [AuthController::class, 'loginCreate'])->name('login_index');
+Route::get('/register', [AuthController::class, 'registerCreate'])->name('register_index');
+Route::post('/', [AuthController::class, 'registerStore'])->name('register_store');
