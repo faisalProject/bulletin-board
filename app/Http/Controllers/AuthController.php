@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
@@ -18,24 +20,47 @@ class AuthController extends Controller
         return view('register');
     }
 
-    public function loginStore()
+    public function loginStore(LoginRequest $request)
     {
+        $user = $request->validated();
 
+        if ( Auth::attempt($user) ) {
+            if ( auth()->user()->role === 'admin' ) {
+                Alert::success('Berhasil', 'Selamat datang dihalaman admin Bulletin Board!');
+                return redirect()->route('dashboard_admin');
+            } else {
+                Alert::success('Berhasil', 'Selamat datang dihalaman dashboard Bulletin Board!');
+                return redirect()->route('');
+            }
+        } else {
+            Alert::error('Gagal', 'Email atau password salah!');
+            return redirect()->route('login_index');
+        }
     }
 
     public function registerStore(RegisterRequest $request)
     {
         $user = $request->validated();
         
-        // cek password
+        // Check email is already exist
+
+        $emails = User::all();
+        foreach ( $emails as $email ) {
+            if ( $user['email'] === $email->email ) {
+                Alert::error('Gagal', 'Email sudah pernah digunakan!');
+                return redirect()->route('register_index');
+            }
+        }
+
+        // Check password
         if ( $user['password'] !== $request->input('confirmation-password') ) {
-            Alert::error('Gagal!', 'Konfirmasi password tidak sesuai');
+            Alert::error('Gagal', 'Konfirmasi password tidak sesuai!');
             return redirect()->route('register_index');
         }
 
         // Create user
         User::create($user + ['role' => 'user']);
-        Alert::success('Berhasil!', 'Akun Anda berhasil terdafar');
+        Alert::success('Berhasil', 'Akun Anda berhasil terdafar!');
         return redirect()->route('login_index');
     }
 }

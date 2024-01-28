@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardCT;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,5 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [AuthController::class, 'loginCreate'])->name('login_index');
+Route::post('/login', [AuthController::class, 'loginStore'])->name('login_store');
 Route::get('/register', [AuthController::class, 'registerCreate'])->name('register_index');
 Route::post('/', [AuthController::class, 'registerStore'])->name('register_store');
+
+// Admin
+Route::middleware(['admin', 'auth'])->prefix('admin')->group(function() {
+    Route::get('dashboard', [DashboardCT::class, 'index'])->name('dashboard_admin');
+});
