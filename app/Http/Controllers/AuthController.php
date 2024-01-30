@@ -30,7 +30,7 @@ class AuthController extends Controller
                 return redirect()->route('dashboard_admin');
             } else {
                 Alert::success('Berhasil', 'Selamat datang dihalaman dashboard Bulletin Board!');
-                return redirect()->route('');
+                return redirect()->route('dashboard_user');
             }
         } else {
             Alert::error('Gagal', 'Email atau password salah!');
@@ -60,7 +60,7 @@ class AuthController extends Controller
 
         // Create user
         User::create($user + ['role' => 'user']);
-        Alert::success('Berhasil', 'Akun Anda berhasil terdafar!');
+        Alert::success('Berhasil', 'Akun Anda berhasil terdaftar!');
         return redirect()->route('login_index');
     }
 }

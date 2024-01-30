@@ -29,13 +29,11 @@
   <!-- Template Main CSS File -->
   <link href="css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Bulletin Board
-  * Updated: Jan 09 2024 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <style>
+    .swal2-confirm {
+      display: none !important;
+    }
+  </style>
 </head>
 
 <body>
@@ -49,7 +47,7 @@
             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
               <div class="d-flex justify-content-center py-4">
-                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                <a href="/" class="logo d-flex align-items-center w-auto">
                   <img src="img/logo.png" alt="">
                   <span class="d-none d-lg-block">Bulletin Board</span>
                 </a>

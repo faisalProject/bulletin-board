@@ -1,0 +1,115 @@
+h1, h2, h3, h4, h5, h6, p {
+    margin-bottom: 0 !important;
+    color: #012970;
+}
+
+.dashboard-contents-admin {
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+}
+
+.dashboard-contents-admin > .news-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: min-content;
+    grid-auto-rows: min-content;
+    gap: 10px;
+}
+
+.dashboard-contents-admin > .news-container > .card {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    min-height: 200px;
+    box-shadow: none !important;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 0 !important;
+}
+
+.dashboard-contents-admin > .news-container > .card > img {
+    width: 100%;
+    object-fit: cover;
+    border-bottom: 1px solid #ced4da;
+    height: 160px;
+}
+
+.dashboard-contents-admin > .news-container > .card > .desc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.dashboard-contents-admin > .news-container > .card > .desc > a.title {
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: underline;
+    color: #012970;
+}
+
+.dashboard-contents-admin > .news-container > .card > .desc > p.date {
+    color: #899bbd;
+    font-size: 12px;
+    margin-bottom: 0 !important;
+}
+
+.dashboard-contents-admin > .news-container > .card > .desc > p.desc {
+    margin-bottom: 0 !important;
+    color: #012970;
+    font-size: 14px;
+}
+
+/* Reponosive (tablet) */
+@media screen and (max-width: 992px) {
+    .dashboard-contents-admin > .news-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard-contents-admin > .news-container  {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Responsive (mobile) */
+@media screen and (max-width: 576px) {
+    .dashboard-contents-admin > .news-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .btn-responsive {
+        width: 100% !important;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 18px !important;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d6dee1 !important;
+    border-radius: 2px !important;
+    border: 5px solid transparent !important;
+    background-clip: content-box !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf !important;
+}
