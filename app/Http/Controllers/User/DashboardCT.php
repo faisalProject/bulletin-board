@@ -13,8 +13,7 @@ class DashboardCT extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        return view('user.dashboard', compact('user'));
+        return view('user.dashboard.index');
     }
 
     /**

@@ -4,17 +4,31 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\Facades\DataTables;
 
-class DashboardCT extends Controller
+class UsersCT extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('admin.dashboard.index');
+    {   
+        if ( request()->ajax() ) {
+            $data = User::where('role', 'user')
+            ->orderBy('updated_at', 'DESC')
+            ->get();
+            return DataTables::of($data)
+                ->addColumn('updated_at', function($row) {
+                    return Carbon::parse($row->updated_at)->format('Y-m-d H:i:s');
+                })
+                ->rawColumns(['updated_at'])
+                ->make();
+        }
+
+        return view('admin.users.index');
     }
 
     /**

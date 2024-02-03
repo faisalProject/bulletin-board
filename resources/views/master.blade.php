@@ -9,31 +9,31 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  @if ( $user->role === 'admin' )
+  @if ( Auth::user()->role === 'admin' )
     <!-- Favicons -->
-    <link href="../img/favicon.png" rel="icon">
-    <link href="../img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="../../img/favicon.png" rel="icon">
+    <link href="../../img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="../vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="../vendor/quill/quill.snow.css" rel="stylesheet">
-    <link href="../vendor/quill/quill.bubble.css" rel="stylesheet">
-    <link href="../vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="../vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../../vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="../../vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="../../vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="../../vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="../../vendor/simple-datatables/style.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="../css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/mycss.css">
+    <link href="../../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/mycss.css">
   @else
       <!-- Favicons -->
-    <link href="img/favicon.png" rel="icon">
-    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="../img/favicon.png" rel="icon">
+    <link href="../img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,16 +41,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="vendor/aos/aos.css" rel="stylesheet">
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="../vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="../vendor/aos/aos.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="css/main.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/mycss.css">
+    <link href="../css/main.css" rel="stylesheet">
+    
   @endif
 
   <style>
@@ -58,17 +58,20 @@
       display: none !important;
     }
   </style>
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+
 </head>
 
 <body>
 
-  @if ( $user->role === 'admin' )
+  @if ( Auth::user()->role === 'admin' )
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
 
       <div class="d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <img src="../img/logo.png" alt="">
+        <a href="/admin/dashboard/index" class="logo d-flex align-items-center">
+          <img src="../../img/logo.png" alt="">
           <span class="d-none d-lg-block">BulletinBoard</span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -234,13 +237,13 @@
           <li class="nav-item dropdown pe-3">
 
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-              <img src="../img/profile-img.jpg" alt="Profile" class="rounded-circle">
-              <span class="d-none d-md-block dropdown-toggle ps-2">{{ $user->username }}</span>
+              <img src="../../img/profile-img.jpg" alt="Profile" class="rounded-circle">
+              <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->username }}</span>
             </a><!-- End Profile Iamge Icon -->
 
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                <h6>{{ $user->username }}</h6>
+                <h6>{{ Auth::user()->username }}</h6>
               </li>
               <li>
                 <hr class="dropdown-divider">
@@ -297,7 +300,7 @@
       <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-          <a class="nav-link " href="index.html">
+          <a class="nav-link collapsed" href="/admin/dashboard/index">
             <i class="bi bi-grid"></i>
             <span>Dashboard</span>
           </a>
@@ -306,14 +309,21 @@
         <li class="nav-heading">Pages</li>
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="users-profile.html">
+          <a class="nav-link collapsed" href="/admin/news/index">
             <i class="bi bi-newspaper"></i>
             <span>Berita</span>
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="users-profile.html">
+          <a class="nav-link collapsed" href="/admin/category/index">
+            <i class="bi bi-tags"></i>
+            <span>Categori</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/admin/user/index">
             <i class="bi bi-people"></i>
             <span>Pengguna</span>
           </a>
@@ -360,17 +370,17 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="../vendor/apexcharts/apexcharts.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../vendor/chart.js/chart.umd.js"></script>
-    <script src="../vendor/echarts/echarts.min.js"></script>
-    <script src="../vendor/quill/quill.min.js"></script>
-    <script src="../vendor/simple-datatables/simple-datatables.js"></script>
-    <script src="../vendor/tinymce/tinymce.min.js"></script>
-    <script src="../vendor/php-email-form/validate.js"></script>
+    <script src="../../vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../vendor/chart.js/chart.umd.js"></script>
+    <script src="../../vendor/echarts/echarts.min.js"></script>
+    <script src="../../vendor/quill/quill.min.js"></script>
+    <script src="../../vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="../../vendor/tinymce/tinymce.min.js"></script>
+    <script src="../../vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="../js/main.js"></script>
+    <script src="../../js/main.js"></script>
   @else
     <!-- ======= Header ======= -->
     <header id="header" class="header d-flex align-items-center fixed-top">
@@ -550,19 +560,28 @@
     <div id="preloader"></div>
   
     <!-- Vendor JS Files -->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="vendor/aos/aos.js"></script>
-    <script src="vendor/php-email-form/validate.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="../vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="../vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="../vendor/aos/aos.js"></script>
+    <script src="../vendor/php-email-form/validate.js"></script>
   
     <!-- Template Main JS File -->
-    <script src="js/scripts.js"></script>
+    <script src="../js/scripts.js"></script>
 
   @endif
+
   @include('sweetalert::alert')
 
+  <script src="js/jquery-3.7.1.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+  <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+
+  @stack('scripts')
+  
 </body>
 
 </html>
