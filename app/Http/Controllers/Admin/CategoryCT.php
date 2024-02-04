@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoryRequest;
 use App\Models\Category;
+use App\Models\Post;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\Facades\DataTables;
@@ -29,37 +29,41 @@ class CategoryCT extends Controller
                 ->addColumn('action', function($row) {
                     $buttons = '<div style="display: flex; justify-content: center; align-items: center; gap: 10px">
                     <button type="button" class="btn btn-warning edit-btn" data-bs-toggle="modal" data-bs-target="#edit-category'. $row->id .'"><i class="bi bi-pencil-square"></i></button>
-                    <div class="modal fade" id="edit-category'. $row->id .'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <form action="'. route('category_admin_update', $row->id) .'" method="POST" class="modal-content">
-                                '. csrf_field() .'
-                                '. method_field('PUT').'
-                                <div class="modal-header">
-                                    <h5 id="exampleModalLabel" style="margin-bottom: 0 !important; font-weight: 600">Ubah Kategori</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body" style="display: flex; flex-direction: column; gap: 15px">
-                                    <div style="display: flex; flex-direction: column; gap: 10px">
-                                        <label for="category_name">Nama Kategori</label>
-                                        <input type="text" class="form-control" name="category_name" id="category_name" value="'. $row->category_name .'">
-                                        
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger btn-responsive" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i>Tutup</button>
-                                    <button type="submit" class="btn btn-warning btn-responsive"><i class="bi bi-pencil-square"></i></i>Ubah</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
                     <form id="'. $row->id .'" action="'. route('category_admin_destroy', $row->id) .'" method="POST">
                         '. csrf_field() .'
                         '. method_field('DELETE') .'
-                        <button type="submit" class="btn btn-danger delete-btn" data-form-id="'. $row->id .'"><i class="bi bi-trash3-fill"></i></button>
+                        <button type="button" class="btn btn-danger" id="category-admin-destroy" data-form-id="'. $row->id .'"><i class="bi bi-trash3-fill"></i></button>
                     </form>';    
                     return $buttons;
                 })
-                ->rawColumns(['updated_at', 'action'])
+                ->addColumn('modal', function($row) {
+                    $modal = '<div class="modal fade" id="edit-category'. $row->id .'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <form action="'. route('category_admin_update', $row->id) .'" method="POST" class="modal-content">
+                                        '. csrf_field() .'
+                                        '. method_field('PUT').'
+                                        <div class="modal-header">
+                                            <h5 id="exampleModalLabel" style="margin-bottom: 0 !important; font-weight: 600">Ubah Kategori</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body" style="display: flex; flex-direction: column; gap: 15px">
+                                            <div style="display: flex; flex-direction: column; gap: 10px">
+                                                <label for="category_name">Nama Kategori</label>
+                                                <input type="text" class="form-control" name="category_name" id="category_name" value="'. $row->category_name .'">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger btn-responsive" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i>Tutup</button>
+                                            <button type="submit" class="btn btn-warning btn-responsive"><i class="bi bi-pencil-square"></i></i>Ubah</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>';
+                    
+                    return $modal;
+                })
+                ->rawColumns(['updated_at', 'action', 'modal'])
                 ->make();
         }
 
@@ -123,6 +127,7 @@ class CategoryCT extends Controller
      */
     public function destroy($id)
     {
+        Post::where('category_id', $id)->delete();
         Category::where('id', $id)->delete();
         Alert::success('Berhasil', 'Kategori berhasil dihapus!');
         return redirect()->back();

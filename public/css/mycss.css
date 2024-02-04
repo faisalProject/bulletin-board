@@ -6,12 +6,84 @@ h1, h2, h3, h4, h5, h6, p {
 .dashboard-contents-admin,
 .news-contents-admin,
 .user-contents-admin,
-.category-contents-admin {
+.category-contents-admin,
+.news-create,
+.news-detail-content,
+.news-edit {
     min-height: 100px;
     display: flex;
     flex-direction: column;
     gap: 15px;
     /* border: 1px solid red; */
+}
+
+.news-detail-content > .card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.news-create > .card,
+.news-edit > .card {
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    /* border: 1px solid red; */
+}
+
+.form-control,
+.form-select {
+    border-radius: 4px !important;
+    border: 1px solid #ced4da !important;
+    width: 100% !important;
+    box-shadow: none !important;
+}
+
+textarea:active,
+.ck-editor__main {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.select2-selection--single {
+    height: 35px !important;
+    border: 1px solid #ced4da !important;
+    padding-top: 3px;
+    outline: none !important;
+    width: 100% !important;
+    position: static !important;
+}
+
+.news-create > .card > .row-input,
+.news-edit > .card > .row-input {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.news-create > .card > .row-input > .col,
+.news-edit > .card > .row-input > .col {
+    width: 50%;
+    min-height: 100px;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.news-create > .card > .row-input > .col > .input-el,
+.news-edit > .card > .row-input > .col > .input-el {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* border: 1px solid blue; */
+    position: relative !important;
+    flex: 1;
+}
+
+.modal-dialog {
+    z-index: 99 !important;
 }
 
 .datatable-input, 
@@ -157,9 +229,26 @@ select {
     .dashboard-contents-admin > .news-container {
         grid-template-columns: repeat(1, 1fr);
     }
+    
+    .news-create > .card > .row-input,
+    .news-edit > .card > .row-input {
+        flex-direction: column;
+    }
 
-    .btn-responsive {
+    .btn-responsive,
+    .news-create > .card > .row-input > .col,
+    .news-edit > .card > .row-input > .col {
         width: 100% !important;
+    }
+
+
+    .modal-dialog {
+        /* border: 1px solid red; */
+        margin: 10px !important;
+        padding: 10px !important;
+        left: 0 !important;
+        right: 0 !important;
+        display: block !important;
     }
 }
 

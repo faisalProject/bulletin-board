@@ -6,14 +6,14 @@
             <h1>Daftar Pengguna</h1>
             <nav style="margin-bottom: 0 !important">
                 <ol class="breadcrumb" style="margin-bottom: 0 !important">
-                    <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/dashboard/index">Home</a></li>
                     <li class="breadcrumb-item active">Daftar Pengguna</li>
                 </ol>
             </nav>
         </div>
 
         <div class="card" style="padding: 20px; display: flex; gap: 15px; flex-direction: column">
-            <table class="table datatable-users" style="width: 100%;">
+            <table id="datatable-users" class="table" style="width: 100%;">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -32,7 +32,7 @@
 @push('scripts')
     <script type="text/javascript">
         $(document).ready(function() {
-            var table = $('.datatable-users').DataTable({
+            var table = $('#datatable-users').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {

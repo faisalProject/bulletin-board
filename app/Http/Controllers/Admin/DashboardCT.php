@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DashboardCT extends Controller
 {
@@ -14,7 +13,12 @@ class DashboardCT extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard.index');
+        $news =  DB::table('posts as p')
+        ->select('p.id', 'p.image', 'p.title', 'p.content', 'p.updated_at', 'u.id as user_id', 'u.username', 'c.id as category_id', 'c.category_name')
+        ->leftJoin('users as u', 'p.user_id', '=', 'u.id')
+        ->leftJoin('categories as c', 'p.category_id', '=', 'c.id')
+        ->get();
+        return view('admin.dashboard.index', compact('news'));
     }
 
     /**
@@ -36,9 +40,16 @@ class DashboardCT extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $news =  DB::table('posts as p')
+        ->select('p.id', 'p.image', 'p.title', 'p.content', 'p.updated_at', 'u.id as user_id', 'u.username', 'c.id as category_id', 'c.category_name')
+        ->leftJoin('users as u', 'p.user_id', '=', 'u.id')
+        ->leftJoin('categories as c', 'p.category_id', '=', 'c.id')
+        ->where('p.id', $id)
+        ->first();
+
+        return view('admin.dashboard.detail', compact('news'));
     }
 
     /**

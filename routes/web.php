@@ -23,13 +23,21 @@ Route::get('/', [AuthController::class, 'loginCreate'])->name('login_index');
 Route::post('/login', [AuthController::class, 'loginStore'])->name('login_store');
 Route::get('/register', [AuthController::class, 'registerCreate'])->name('register_index');
 Route::post('/', [AuthController::class, 'registerStore'])->name('register_store');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Admin
 Route::middleware(['admin', 'auth'])->prefix('admin')->group(function() {
+    // CRUD dashboard
     Route::get('dashboard/index', [DashboardCT::class, 'index'])->name('dashboard_admin');
+    Route::get('dashboard/detail/{id}', [DashboardCT::class, 'show'])->name('dashboard_admin_detail');
 
     // CRUD news
     Route::get('news/index', [NewsCT::class, 'index'])->name('news_admin');
+    Route::get('news/create', [NewsCT::class, 'create'])->name('news_admin_create');
+    Route::post('news/index', [NewsCT::class, 'store'])->name('news_admin_store');
+    Route::get('news/edit/{id}', [NewsCT::class, 'edit'])->name('news_admin_edit');
+    Route::put('news/index/{id}', [NewsCT::class, 'update'])->name('news_admin_update');
+    Route::delete('news/index/{id}', [NewsCT::class, 'destroy'])->name('news_admin_destroy');
 
     // CRUD user
     Route::get('user/index', [UsersCT::class, 'index'])->name('users_admin');

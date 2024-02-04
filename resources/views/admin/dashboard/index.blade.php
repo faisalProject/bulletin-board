@@ -6,7 +6,7 @@
             <h1>Dashboard</h1>
             <nav style="margin-bottom: 0 !important">
               <ol class="breadcrumb" style="margin-bottom: 0 !important">
-                <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
+                <li class="breadcrumb-item"><a href="/admin/dashboard/index">Home</a></li>
                 <li class="breadcrumb-item active">Dashboard</li>
               </ol>
             </nav>
@@ -15,50 +15,17 @@
             <h5 style="font-weight: 600">Berita Terbaru</h5>
         </div>
         <div class="news-container">
-            <div class="card">
-                <img src="../../img/2.jpg" alt="">
-                <div class="desc">
-                    <a class="title" href="#">Lorem Ipsum Dolor...</a>
-                    <p class="date">Senin, 23 Agustus 2024</p>
-                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget tincidunt magna. Aliquam eu eros quis nisi vulputate convallis sed id mi...</p>
+            @foreach ($news as $n)   
+                <?php $content = \Illuminate\Support\Str::words(strip_tags($n->content), 30, '...') ?>
+                <div class="card">
+                    <img src="{{ url($n->image) }}" alt="">
+                    <div class="desc">
+                        <a class="title" href="/admin/dashboard/detail/{{ $n->id }}">{{ $n->title }}</a>
+                        <p style="color: #899bbd !important" class="date">{{ \Carbon\Carbon::parse($n->updated_at)->isoFormat('dddd, D MMMM YYYY') }}</p>
+                        <p class="desc">{!! $content !!}</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="card">
-                <img src="../../img/2.jpg" alt="">
-                <div class="desc">
-                    <a class="title" href="#">Lorem Ipsum Dolor...</a>
-                    <p class="date">Senin, 23 Agustus 2024</p>
-                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget tincidunt magna. Aliquam eu eros quis nisi vulputate convallis sed id mi...</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="../../img/2.jpg" alt="">
-                <div class="desc">
-                    <a class="title" href="#">Lorem Ipsum Dolor...</a>
-                    <p class="date">Senin, 23 Agustus 2024</p>
-                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget tincidunt magna. Aliquam eu eros quis nisi vulputate convallis sed id mi...</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="../../img/2.jpg" alt="">
-                <div class="desc">
-                    <a class="title" href="#">Lorem Ipsum Dolor...</a>
-                    <p class="date">Senin, 23 Agustus 2024</p>
-                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget tincidunt magna. Aliquam eu eros quis nisi vulputate convallis sed id mi...</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="../../img/2.jpg" alt="">
-                <div class="desc">
-                    <a class="title" href="#">Lorem Ipsum Dolor...</a>
-                    <p class="date">Senin, 23 Agustus 2024</p>
-                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget tincidunt magna. Aliquam eu eros quis nisi vulputate convallis sed id mi...</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection
