@@ -33,8 +33,8 @@
     <link rel="stylesheet" href="../../../css/mycss.css">
   @else
       <!-- Favicons -->
-    <link href="../img/favicon.png" rel="icon">
-    <link href="../img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="../../../img/favicon.png" rel="icon">
+    <link href="../../../img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,15 +42,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="../vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="../vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="../vendor/aos/aos.css" rel="stylesheet">
+    <link href="../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="../../../vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../../../vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="../../../vendor/aos/aos.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="../css/main.css" rel="stylesheet">
+    <link href="../../../css/main.css" rel="stylesheet">
     
   @endif
 
@@ -70,6 +70,25 @@
     .swal2-cancel,
     .swal2-cancel:hover {
       box-shadow: none !important;
+    }
+
+    ::-webkit-scrollbar {
+      width: 18px !important;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: transparent !important;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #d6dee1 !important;
+      border-radius: 2px !important;
+      border: 5px solid transparent !important;
+      background-clip: content-box !important;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: #a8bbbf !important;
     }
   </style>
 
@@ -406,7 +425,7 @@
     <header id="header" class="header d-flex align-items-center fixed-top">
       <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-        <a href="index.html" class="logo d-flex align-items-center">
+        <a href="/dashboard/index" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="img/logo.png" alt=""> -->
           <h1>BulletinBorad</h1>
@@ -418,27 +437,14 @@
           <ul>
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-              <ul>
-                <li><a href="#">Drop Down 1</a></li>
-                <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                  <ul>
-                    <li><a href="#">Deep Drop Down 1</a></li>
-                    <li><a href="#">Deep Drop Down 2</a></li>
-                    <li><a href="#">Deep Drop Down 3</a></li>
-                    <li><a href="#">Deep Drop Down 4</a></li>
-                    <li><a href="#">Deep Drop Down 5</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Drop Down 2</a></li>
-                <li><a href="#">Drop Down 3</a></li>
-                <li><a href="#">Drop Down 4</a></li>
-              </ul>
-            </li>
+            <li><a href="services.html">Berita</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a class="get-a-quote" href="get-a-quote.html">Get a Quote</a></li>
+            <li>
+              <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="get-a-quote btn btn-primary" style="box-shadow: none !important; border-radius: 4px; border: none !important; font-weight: 600; letter-spacing: 1.2px">Logout</button>
+              </form>
+            </li>
           </ul>
         </nav><!-- .navbar -->
 
@@ -446,62 +452,10 @@
     </header><!-- End Header -->
     <!-- End Header -->
 
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="hero d-flex align-items-center">
-      <div class="container">
-        <div class="row gy-4 d-flex justify-content-between">
-          <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-            <h2 data-aos="fade-up">Your Lightning Fast Delivery Partner</h2>
-            <p data-aos="fade-up" data-aos-delay="100">Facere distinctio molestiae nisi fugit tenetur repellat non praesentium nesciunt optio quis sit odio nemo quisquam. eius quos reiciendis eum vel eum voluptatem eum maiores eaque id optio ullam occaecati odio est possimus vel reprehenderit</p>
 
-            <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
-              <input type="text" class="form-control" placeholder="ZIP code or CitY">
-              <button type="submit" class="btn btn-primary">Search</button>
-            </form>
-
-            <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
-
-              <div class="col-lg-3 col-6">
-                <div class="stats-item text-center w-100 h-100">
-                  <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                  <p>Clients</p>
-                </div>
-              </div><!-- End Stats Item -->
-
-              <div class="col-lg-3 col-6">
-                <div class="stats-item text-center w-100 h-100">
-                  <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                  <p>Projects</p>
-                </div>
-              </div><!-- End Stats Item -->
-
-              <div class="col-lg-3 col-6">
-                <div class="stats-item text-center w-100 h-100">
-                  <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-                  <p>Support</p>
-                </div>
-              </div><!-- End Stats Item -->
-
-              <div class="col-lg-3 col-6">
-                <div class="stats-item text-center w-100 h-100">
-                  <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-                  <p>Workers</p>
-                </div>
-              </div><!-- End Stats Item -->
-
-            </div>
-          </div>
-
-          <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-            <img src="img/hero-img.svg" class="img-fluid mb-3 mb-lg-0" alt="">
-          </div>
-
-        </div>
-      </div>
-    </section><!-- End Hero Section -->
 
     <main id="main">
-      @yield('contents');
+      @yield('contents')
     </main><!-- End #main -->
   
     <!-- ======= Footer ======= -->
@@ -511,7 +465,7 @@
         <div class="row gy-4">
           <div class="col-lg-5 col-md-12 footer-info">
             <a href="index.html" class="logo d-flex align-items-center">
-              <span>Logis</span>
+              <span>BulletinBoard</span>
             </a>
             <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
             <div class="social-links d-flex mt-4">
@@ -561,14 +515,14 @@
   
       <div class="container mt-4">
         <div class="copyright">
-          &copy; Copyright <strong><span>Logis</span></strong>. All Rights Reserved
+          &copy; Copyright <strong><span>BulletinBoard</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
           <!-- All the links in the footer should remain intact. -->
           <!-- You can delete the links only if you purchased the pro version. -->
           <!-- Licensing information: https://bootstrapmade.com/license/ -->
           <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/logis-bootstrap-logistics-website-template/ -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          Designed by <a href="https://github.com/faisalProject" target="_blank">Faisal</a>
         </div>
       </div>
   
@@ -580,15 +534,15 @@
     <div id="preloader"></div>
   
     <!-- Vendor JS Files -->
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="../vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="../vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="../vendor/aos/aos.js"></script>
-    <script src="../vendor/php-email-form/validate.js"></script>
+    <script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="../../../vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="../../../vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="../../../vendor/aos/aos.js"></script>
+    <script src="../../../vendor/php-email-form/validate.js"></script>
   
     <!-- Template Main JS File -->
-    <script src="../js/scripts.js"></script>
+    <script src="../../../js/scripts.js"></script>
 
   @endif
 

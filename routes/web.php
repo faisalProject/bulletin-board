@@ -52,4 +52,5 @@ Route::middleware(['admin', 'auth'])->prefix('admin')->group(function() {
 // User
 Route::middleware(['user', 'auth'])->group(function() {
     Route::get('dashboard/index', [UserDashboardCT::class, 'index'])->name('dashboard_user');
+    Route::get('dashboard/detail/{id}', [UserDashboardCT::class, 'show'])->name('news_detail');
 });

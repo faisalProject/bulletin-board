@@ -1914,3 +1914,27 @@ section {
   color: #fff;
 }
 
+.news-title {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 15px !important;
+  align-items: center !important;
+}
+
+.news-title > h3 {
+  font-size: 40px !important;
+  color: #fff !important;
+}
+
+@media screen and (max-width: 586px) {
+  .news-title {
+    width: 100% !important;
+    /* border: 1px solid red; */
+  }
+
+  .sub-menu {
+    flex-direction: column !important;
+  }
+}

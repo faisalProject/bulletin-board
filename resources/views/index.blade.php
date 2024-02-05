@@ -33,6 +33,29 @@
     .swal2-confirm {
       display: none !important;
     }
+
+    .btn {
+      border-radius: 4px !important;
+    }
+
+    .btn-responsive {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .btn-add {
+      background-color: #4154f1 !important;
+      color: #fff !important;
+    }
+
+    .btn-add:hover {
+      background-color: #4f60f6 !important;
+      color: #fff !important;
+    }
   </style>
 </head>
 
@@ -86,7 +109,7 @@
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Login</button>
+                      <button class="btn btn-add w-100" type="submit">Login</button>
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">Don't have account? <a href="register">Create an account</a></p>

@@ -16,7 +16,7 @@
         </div>
         <div class="news-container">
             @foreach ($news as $n)   
-                <?php $content = \Illuminate\Support\Str::words(strip_tags($n->content), 30, '...') ?>
+                <?php $content = \Illuminate\Support\Str::words(strip_tags($n->content), 40, '...') ?>
                 <div class="card">
                     <img src="{{ url($n->image) }}" alt="">
                     <div class="desc">
