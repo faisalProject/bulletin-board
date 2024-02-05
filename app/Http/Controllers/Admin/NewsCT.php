@@ -24,6 +24,7 @@ class NewsCT extends Controller
         ->select('p.id', 'p.image', 'p.title', 'p.content', 'p.updated_at', 'u.id as user_id', 'u.username', 'c.id as category_id', 'c.category_name')
         ->leftJoin('users as u', 'p.user_id', '=', 'u.id')
         ->leftJoin('categories as c', 'p.category_id', '=', 'c.id')
+        ->orderBy('p.updated_at', 'DESC')
         ->get();
 
         if ( request()->ajax() ) {

@@ -1928,6 +1928,29 @@ section {
   color: #fff !important;
 }
 
+.btn {
+  border-radius: 4px !important;
+}
+
+.btn-responsive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.btn-add {
+  background-color: #4154f1 !important;
+  color: #fff !important;
+}
+
+.btn-add:hover {
+  background-color: #4f60f6 !important;
+  color: #fff !important;
+}
+
 @media screen and (max-width: 586px) {
   .news-title {
     width: 100% !important;
@@ -1936,5 +1959,12 @@ section {
 
   .sub-menu {
     flex-direction: column !important;
+  }
+}
+
+
+@media screen and (max-width: 576px) {
+  .btn-responsive {
+    width: 100%;
   }
 }

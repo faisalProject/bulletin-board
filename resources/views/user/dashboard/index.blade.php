@@ -67,7 +67,7 @@
 
       <div class="row gy-4">
         @foreach ($posts as $post)  
-          <?php $content = \Illuminate\Support\Str::words(strip_tags($post->content), 30, '...') ?>  
+          <?php $content = \Illuminate\Support\Str::words(strip_tags($post->content), 20, '...') ?>  
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="card" style="min-height: 580px !important">
               <div class="card-img">

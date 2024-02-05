@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardCT;
 use App\Http\Controllers\Admin\NewsCT;
 use App\Http\Controllers\Admin\UsersCT;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\User\CommentCT;
 use App\Http\Controllers\User\DashboardCT as UserDashboardCT;
 use Illuminate\Support\Facades\Route;
 
@@ -53,4 +54,5 @@ Route::middleware(['admin', 'auth'])->prefix('admin')->group(function() {
 Route::middleware(['user', 'auth'])->group(function() {
     Route::get('dashboard/index', [UserDashboardCT::class, 'index'])->name('dashboard_user');
     Route::get('dashboard/detail/{id}', [UserDashboardCT::class, 'show'])->name('news_detail');
+    Route::post('dashboard/detail/{id}', [CommentCT::class, 'store'])->name('comment_store');
 });

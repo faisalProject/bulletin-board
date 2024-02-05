@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -58,8 +59,15 @@ class DashboardCT extends Controller
             ->first();
 
         $categories = Category::orderBy('updated_at', 'DESC')->get();
+        $comments = DB::table('comments as c')
+            ->leftJoin('users as u', 'c.user_id', '=', 'u.id')
+            ->leftJoin('posts as p', 'c.post_id', '=', 'p.id')
+            ->select('c.id', 'c.content', 'u.id as user_id', 'u.username', 'p.id as post_id', 'p.title')
+            ->where('p.id', $id)
+            ->get();
 
-        return view('user.dashboard.detail', compact('post', 'categories'));
+
+        return view('user.dashboard.detail', compact('post', 'categories', 'comments'));
     }
 
     /**

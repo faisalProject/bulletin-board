@@ -48,6 +48,29 @@
           <h3>{{ $post->title }}</h3>
           <p>{!! $post->content !!}</p>
         </div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-8">
+          <div style="display: flex; flex-direction: column; gap: 15px;">
+            <p style="font-weight: 600; margin-bottom: 0 !important">Komentar:</p>
+            <ul>
+              @foreach ($comments as $comment)  
+                <li style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start">
+                  <p style="font-weight: 600; margin-bottom: 0 !important; display: flex; align-items: center; gap: 10px"><i class="bi bi-caret-right-fill" style="color: #899bbd"></i> {{ $comment->username }}</p>
+                  <p style="margin-bottom: 0 !important">{{ $comment->content }}</p>
+                </li>
+              @endforeach
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-8">
+          <form action="{{ route('comment_store', $post->id) }}" method="POST" style="display: flex; flex-direction: column; gap: 10px">
+            @csrf
+            <label for="comment" style="font-weight: 600">Tambahkan komentar sebagai {{ Auth::user()->username }}</label>
+            <textarea name="content" id="comment" class="form-control" cols="30" rows="10" style="width: 100%"></textarea>
+            <button type="submit" class="btn btn-add btn-responsive"><i class="bi bi-check-circle-fill"></i> Simpan Komentar</button>
+          </form>
+        </div>
 
       </div>
 
