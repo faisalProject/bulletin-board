@@ -38,8 +38,9 @@
           </div>
           
           <div style="display: flex; flex-direction: column; gap: 10px">
-            <p style="color: #899bbd">{{ \Carbon\Carbon::parse($post->updated_at)->isoFormat('dddd, D MMMM YYYY') }}</p>
-            <p>Penulis : {{ $post->username }}</p>
+            <p style="color: #899bbd; margin-bottom: 0 !important">{{ \Carbon\Carbon::parse($post->updated_at)->isoFormat('dddd, D MMMM YYYY') }}</p>
+            <p style="margin-bottom: 0 !important">Penulis : {{ $post->username }}</p>
+            <p style="margin-bottom: 0 !important">Kategori : {{ $post->category_name }}</p>
           </div>
         </div>
 
@@ -53,12 +54,16 @@
           <div style="display: flex; flex-direction: column; gap: 15px;">
             <p style="font-weight: 600; margin-bottom: 0 !important">Komentar:</p>
             <ul>
-              @foreach ($comments as $comment)  
-                <li style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start">
-                  <p style="font-weight: 600; margin-bottom: 0 !important; display: flex; align-items: center; gap: 10px"><i class="bi bi-caret-right-fill" style="color: #899bbd"></i> {{ $comment->username }}</p>
-                  <p style="margin-bottom: 0 !important">{{ $comment->content }}</p>
-                </li>
-              @endforeach
+              @if ( !$comments->isEmpty() )
+                @foreach ($comments as $comment)  
+                  <li style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start">
+                    <p style="font-weight: 600; margin-bottom: 0 !important; display: flex; align-items: center; gap: 10px"><i class="bi bi-caret-right-fill" style="color: #899bbd"></i> {{ $comment->username }}</p>
+                    <p style="margin-bottom: 0 !important">{{ $comment->content }}</p>
+                  </li>
+                @endforeach
+              @else 
+                  <p style="margin-bottom: 0 !important">Belum Ada komentar</p>
+              @endif 
             </ul>
           </div>
         </div>
@@ -67,8 +72,8 @@
           <form action="{{ route('comment_store', $post->id) }}" method="POST" style="display: flex; flex-direction: column; gap: 10px">
             @csrf
             <label for="comment" style="font-weight: 600">Tambahkan komentar sebagai {{ Auth::user()->username }}</label>
-            <textarea name="content" id="comment" class="form-control" cols="30" rows="10" style="width: 100%"></textarea>
-            <button type="submit" class="btn btn-add btn-responsive"><i class="bi bi-check-circle-fill"></i> Simpan Komentar</button>
+            <textarea name="content" id="comment" class="form-control" cols="30" rows="10" style="width: 100%; box-shadow: none !important" required></textarea>
+            <button type="submit" class="btn btn-primary btn-responsive"><i class="bi bi-check-circle-fill"></i> Simpan Komentar</button>
           </form>
         </div>
 

@@ -3,21 +3,22 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User\CommentRequest;
-use App\Models\Comment;
-use App\Models\Post;
+use App\Http\Requests\User\ContactRequest;
+use App\Models\Category;
+use App\Models\Contact;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class CommentCT extends Controller
+class ContactCT extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('user.contact.index');
     }
 
     /**
@@ -31,14 +32,13 @@ class CommentCT extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CommentRequest $request, $id)
+    public function store(ContactRequest $request)
     {
-        $comment = $request->validated();
-        $post = Post::where('id', $id)->first();
-
-        Comment::create($comment + ['user_id' => Auth::user()->id, 'post_id' => $post->id]);
-        Alert::success('Berhasil', 'Komentar berhasil disimpan');
-        return redirect("/news/detail/$id");
+        $contact = $request->validated();
+        $admin = User::where('role', 'admin')->first();
+        Contact::create($contact + ['user_id' => Auth::user()->id, 'admin_id' => $admin->id]);
+        Alert::success('Berhasil', 'Pesan berhasil dikirim!');
+        return redirect()->back();
     }
 
     /**

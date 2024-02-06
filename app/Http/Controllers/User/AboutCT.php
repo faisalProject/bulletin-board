@@ -3,31 +3,16 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Comment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class DashboardCT extends Controller
+class AboutCT extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $posts = DB::table('posts as p')
-            ->select('p.id', 'p.title', 'p.content', 'p.image', 'p.updated_at', 'u.id as user_id', 'u.username', 'c.id as category_id', 'c.category_name')
-            ->leftJoin('users as u', 'p.user_id', '=', 'u.id')
-            ->leftJoin('categories as c', 'p.category_id', '=', 'c.id')
-            ->orderBy('p.updated_at', 'DESC')
-            ->get();
-
-        $postCount = DB::table('posts')->count();
-        $categoryCount = DB::table('categories')->count();
-        $commentCount = DB::table('comments')->count();
-        $userCount = DB::table('users')->where('role', 'user')->count();
-
-        return view('user.dashboard.index', compact('posts', 'postCount', 'categoryCount', 'commentCount', 'userCount'));
+        return view('user.about.index');
     }
 
     /**
@@ -49,9 +34,9 @@ class DashboardCT extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(string $id)
     {
-        // 
+        //
     }
 
     /**

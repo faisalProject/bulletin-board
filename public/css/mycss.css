@@ -9,7 +9,9 @@ h1, h2, h3, h4, h5, h6, p {
 .category-contents-admin,
 .news-create,
 .news-detail-content,
-.news-edit {
+.news-edit,
+.comment-contents-admin,
+.contact-contents-admin {
     min-height: 100px;
     display: flex;
     flex-direction: column;

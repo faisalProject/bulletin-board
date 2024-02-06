@@ -369,9 +369,16 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="users-profile.html">
+          <a class="nav-link collapsed" href="/admin/comments/index">
             <i class="bi bi-chat-left-text"></i>
             <span>Komentar</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/admin/contact/index">
+            <i class="bi bi-person-lines-fill"></i>
+            <span>Kontak</span>
           </a>
         </li>
 
@@ -435,10 +442,10 @@
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
         <nav id="navbar" class="navbar">
           <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="/dashboard/index" class="active">Home</a></li>
+            <li><a href="/about/index">About</a></li>
             <li><a href="services.html">Berita</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/contact/index">Contact</a></li>
             <li>
               <form action="{{ route('logout') }}" method="POST">
                 @csrf
@@ -463,7 +470,7 @@
   
       <div class="container">
         <div class="row gy-4">
-          <div class="col-lg-5 col-md-12 footer-info">
+          <div class="col-lg-4 col-md-12 footer-info">
             <a href="index.html" class="logo d-flex align-items-center">
               <span>BulletinBoard</span>
             </a>
@@ -475,41 +482,6 @@
               <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
             </div>
           </div>
-  
-          <div class="col-lg-2 col-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Terms of service</a></li>
-              <li><a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-  
-          <div class="col-lg-2 col-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><a href="#">Web Design</a></li>
-              <li><a href="#">Web Development</a></li>
-              <li><a href="#">Product Management</a></li>
-              <li><a href="#">Marketing</a></li>
-              <li><a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-  
-          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-            <h4>Contact Us</h4>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
-  
-          </div>
-  
         </div>
       </div>
   

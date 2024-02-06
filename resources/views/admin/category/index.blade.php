@@ -54,7 +54,7 @@
             });
 
             new $.fn.DataTable.Responsive(table);
-            table.responsive.reaclc();
+            table.responsive.recalc();
         });
     </script>
 

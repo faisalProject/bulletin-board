@@ -1,12 +1,17 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryCT;
+use App\Http\Controllers\Admin\CommentCT as AdminCommentCT;
+use App\Http\Controllers\Admin\ContactCT as AdminContactCT;
 use App\Http\Controllers\Admin\DashboardCT;
 use App\Http\Controllers\Admin\NewsCT;
 use App\Http\Controllers\Admin\UsersCT;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\User\AboutCT;
 use App\Http\Controllers\User\CommentCT;
+use App\Http\Controllers\User\ContactCT;
 use App\Http\Controllers\User\DashboardCT as UserDashboardCT;
+use App\Http\Controllers\User\NewsCT as UserNewsCT;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,11 +53,24 @@ Route::middleware(['admin', 'auth'])->prefix('admin')->group(function() {
     Route::post('category/index', [CategoryCT::class, 'store'])->name('category_admin_store');
     Route::put('category/index/{id}', [CategoryCT::class, 'update'])->name('category_admin_update');
     Route::delete('category/index/{id}', [CategoryCT::class, 'destroy'])->name('category_admin_destroy');
+
+    // CRUD comments
+    Route::get('comments/index', [AdminCommentCT::class, 'index'])->name('comment_admin_index');
+
+    // CRUD contact
+    Route::get('contact/index', [AdminContactCT::class, 'index'])->name('contact_admin_index');
 });
 
 // User
 Route::middleware(['user', 'auth'])->group(function() {
     Route::get('dashboard/index', [UserDashboardCT::class, 'index'])->name('dashboard_user');
-    Route::get('dashboard/detail/{id}', [UserDashboardCT::class, 'show'])->name('news_detail');
-    Route::post('dashboard/detail/{id}', [CommentCT::class, 'store'])->name('comment_store');
+    Route::get('news/detail/{id}', [UserNewsCT::class, 'show'])->name('news_detail');
+    Route::post('news/detail/{id}', [CommentCT::class, 'store'])->name('comment_store');
+
+    // CRUD contact
+    Route::get('contact/index', [ContactCT::class, 'index'])->name('contact_user_index');
+    Route::post('contact/index', [ContactCT::class, 'store'])->name('contact_user_store');
+
+    // CRUD about
+    Route::get('about/index', [AboutCT::class, 'index'])->name('about_user_index');
 });
