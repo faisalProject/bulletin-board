@@ -444,7 +444,7 @@
           <ul>
             <li><a href="/dashboard/index" class="active">Home</a></li>
             <li><a href="/about/index">About</a></li>
-            <li><a href="services.html">Berita</a></li>
+            <li><a href="/news/index">Berita</a></li>
             <li><a href="/contact/index">Contact</a></li>
             <li>
               <form action="{{ route('logout') }}" method="POST">

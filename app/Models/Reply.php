@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Contact extends Model
+class Reply extends Model
 {
     use HasFactory;
-    
-    protected $table = 'contacts';
-    protected $fillable = ['user_id', 'email', 'subject', 'message', 'admin_id'];
+
+    protected $table = 'replies';
+    protected $fillable = ['user_id', 'message_id', 'email', 'subject', 'reply'];
 }

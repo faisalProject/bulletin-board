@@ -15,6 +15,7 @@
         <table id="datatable-contact" class="table" style="width: 100%">
             <thead>
                 <tr>
+                    <th></th>
                     <th>No</th>
                     <th>Nama</th>
                     <th>Subjek</th>
@@ -39,6 +40,7 @@
                     url: "{{ route('contact_admin_index') }}"
                 },
                 columns: [
+                    {data: 'modal', name: 'modal'},
                     {
                         data: null,
                         render: function( data, type, row, meta ) {

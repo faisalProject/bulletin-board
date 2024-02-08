@@ -14,7 +14,18 @@ class NewsCT extends Controller
      */
     public function index()
     {
-        //
+        
+        
+        $posts = DB::table('posts')
+            ->select('posts.id', 'posts.title', 'posts.image', 'posts.content', 'posts.updated_at', 'categories.id as category_id', 'categories.category_name', 'users.id as user_id', 'users.username')
+            ->leftJoin('categories', 'posts.category_id', '=', 'categories.id')
+            ->leftJoin('users', 'posts.user_id', '=', 'users.id')
+            ->orderBy('posts.updated_at', 'DESC')
+            ->get();
+
+        $categories = Category::orderBy('updated_at', 'DESC')->get();
+            
+        return view('user.news.index', compact('posts', 'categories'));
     }
 
     /**

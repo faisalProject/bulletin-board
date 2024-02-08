@@ -66,20 +66,20 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-6 form-group">
-                            <input type="text" style="box-shadow: none !important; border-radius: 4px !important" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                            <input type="text" style="box-shadow: none !important; border-radius: 4px !important" name="name" class="form-control" id="name" placeholder="Nama" required>
                         </div>
                         <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <input type="email" style="box-shadow: none !important; border-radius: 4px !important" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                            <input type="email" style="box-shadow: none !important; border-radius: 4px !important" class="form-control" name="email" id="email" placeholder="Email" required>
                         </div>
                     </div>
                     <div class="form-group mt-3">
-                        <input type="text" style="box-shadow: none !important; border-radius: 4px !important" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                        <input type="text" style="box-shadow: none !important; border-radius: 4px !important" class="form-control" name="subject" id="subject" placeholder="Subjek" required>
                     </div>
                     <div class="form-group mt-3">
-                        <textarea class="form-control" style="box-shadow: none !important; border-radius: 4px !important" name="message" rows="5" placeholder="Message" required></textarea>
+                        <textarea class="form-control" style="box-shadow: none !important; border-radius: 4px !important" name="message" rows="5" placeholder="Pesan" required></textarea>
                     </div>
                     <div class="form-group mt-3">
-                        <button type="submit" class="btn btn-primary" style="display: flex; justify-content: center; align-items: center; gap: 10px; border-radius: 4px; width: 100%"><i class="bi bi-send-fill"></i> Message</button>
+                        <button type="submit" class="btn btn-primary" style="display: flex; justify-content: center; align-items: center; gap: 10px; border-radius: 4px; width: 100%"><i class="bi bi-send-fill"></i> Kirim</button>
                     </div>
                 </form>
             </div><!-- End Contact Form -->

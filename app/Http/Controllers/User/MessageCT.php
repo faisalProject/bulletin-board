@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User\ContactRequest;
-use App\Models\Category;
-use App\Models\Contact;
-use App\Models\User;
+use App\Http\Requests\User\MessageRequest;
+use App\Models\Message;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use Yajra\DataTables\Facades\DataTables;
 
-class ContactCT extends Controller
+class MessageCT extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,11 +33,14 @@ class ContactCT extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ContactRequest $request)
+    public function store(MessageRequest $request)
     {
-        $contact = $request->validated();
-        $admin = User::where('role', 'admin')->first();
-        Contact::create($contact + ['user_id' => Auth::user()->id, 'admin_id' => $admin->id]);
+        $message = $request->validated();
+        if ( strlen($request->input('subject')) > 50 ) {
+            Alert::error('Kata melebihi batas!');
+            return redirect()->back();
+        }
+        Message::create($message + ['user_id' => Auth::user()->id, 'status' => 0]);
         Alert::success('Berhasil', 'Pesan berhasil dikirim!');
         return redirect()->back();
     }

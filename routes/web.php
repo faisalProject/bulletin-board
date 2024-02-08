@@ -2,15 +2,17 @@
 
 use App\Http\Controllers\Admin\CategoryCT;
 use App\Http\Controllers\Admin\CommentCT as AdminCommentCT;
-use App\Http\Controllers\Admin\ContactCT as AdminContactCT;
 use App\Http\Controllers\Admin\DashboardCT;
 use App\Http\Controllers\Admin\NewsCT;
+use App\Http\Controllers\Admin\ReplyCT;
 use App\Http\Controllers\Admin\UsersCT;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\User\AboutCT;
+use App\Http\Controllers\User\CategoryCT as UserCategoryCT;
 use App\Http\Controllers\User\CommentCT;
 use App\Http\Controllers\User\ContactCT;
 use App\Http\Controllers\User\DashboardCT as UserDashboardCT;
+use App\Http\Controllers\User\MessageCT;
 use App\Http\Controllers\User\NewsCT as UserNewsCT;
 use Illuminate\Support\Facades\Route;
 
@@ -58,19 +60,26 @@ Route::middleware(['admin', 'auth'])->prefix('admin')->group(function() {
     Route::get('comments/index', [AdminCommentCT::class, 'index'])->name('comment_admin_index');
 
     // CRUD contact
-    Route::get('contact/index', [AdminContactCT::class, 'index'])->name('contact_admin_index');
+    Route::get('contact/index', [ReplyCT::class, 'index'])->name('contact_admin_index');
+    Route::post('contact/index/{id}', [ReplyCT::class, 'store'])->name('contact_admin_store');
 });
 
 // User
 Route::middleware(['user', 'auth'])->group(function() {
+    // CRUD news
+    Route::get('news/index', [UserNewsCT::class, 'index'])->name('news_user_index');
     Route::get('dashboard/index', [UserDashboardCT::class, 'index'])->name('dashboard_user');
     Route::get('news/detail/{id}', [UserNewsCT::class, 'show'])->name('news_detail');
     Route::post('news/detail/{id}', [CommentCT::class, 'store'])->name('comment_store');
 
     // CRUD contact
-    Route::get('contact/index', [ContactCT::class, 'index'])->name('contact_user_index');
-    Route::post('contact/index', [ContactCT::class, 'store'])->name('contact_user_store');
+    Route::get('contact/index', [MessageCT::class, 'index'])->name('contact_user_index');
+    Route::post('contact/index', [MessageCT::class, 'store'])->name('contact_user_store');
 
     // CRUD about
     Route::get('about/index', [AboutCT::class, 'index'])->name('about_user_index');
+
+    // CRUD category
+    Route::get('category/index/{category_name}', [UserCategoryCT::class, 'index'])->name('category_user_index');
+
 });
