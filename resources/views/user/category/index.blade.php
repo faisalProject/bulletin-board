@@ -22,7 +22,7 @@
             </div>
           </nav>
         </div><!-- End Breadcrumbs -->
-      </div>
+    </div>
         <!-- ======= Services Section ======= -->
       <section id="service" class="services pt-0">
         <div class="container" data-aos="fade-up">
