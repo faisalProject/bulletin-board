@@ -478,7 +478,7 @@
             <a href="index.html" class="logo d-flex align-items-center">
               <span>BulletinBoard</span>
             </a>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+            <p style="text-align: justify">Bulletin board atau papan pengumuman adalah salah satu alat komunikasi yang paling umum digunakan di berbagai tempat seperti sekolah, kantor, pusat perbelanjaan, dan tempat umum lainnya. Dengan pesan yang dipasang secara visual, bulletin board menjadi sarana yang efektif untuk menyampaikan informasi kepada banyak orang. Proyek bulletin board akan menghasilkan platform yang interaktif dan informatif untuk berbagi berita, pengumuman, informasi acara, dan konten lainnya.</p>
             <div class="social-links d-flex mt-4">
               <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
               <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
