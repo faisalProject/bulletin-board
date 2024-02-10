@@ -14,6 +14,7 @@ use App\Http\Controllers\User\ContactCT;
 use App\Http\Controllers\User\DashboardCT as UserDashboardCT;
 use App\Http\Controllers\User\MessageCT;
 use App\Http\Controllers\User\NewsCT as UserNewsCT;
+use App\Http\Controllers\User\ReplyCT as UserReplyCT;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -82,4 +83,5 @@ Route::middleware(['user', 'auth'])->group(function() {
     // CRUD category
     Route::get('category/index/{category_name}', [UserCategoryCT::class, 'index'])->name('category_user_index');
 
+    Route::get('replies/index', [UserReplyCT::class, 'index'])->name('reply_user_index');
 });

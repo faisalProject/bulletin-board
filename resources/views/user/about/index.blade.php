@@ -21,4 +21,15 @@
         </div>
     </nav>
 </div>
+
+<section id="features" class="features">
+    <div class="container" style="display: flex; flex-direction: column; gap: 15px;">
+        <p style="text-align: justify"><span class="tab">Bulletin</span> board atau papan pengumuman adalah salah satu alat komunikasi yang paling umum digunakan di berbagai tempat seperti sekolah, kantor, pusat perbelanjaan, dan tempat umum lainnya. Dengan pesan yang dipasang secara visual, bulletin board menjadi sarana yang efektif untuk menyampaikan informasi kepada banyak orang. Proyek bulletin board akan menghasilkan platform yang interaktif dan informatif untuk berbagi berita, pengumuman, informasi acara, dan konten lainnya.</p>
+
+        <p>Tujuan</p>
+        <p style="display: flex; align-items: center; gap: 10px; margin-bottom: 0 !important"><i class="bi bi-caret-right-fill"></i>Membuat platform komunikasi yang efisien dan mudah diakses bagi pengguna.</p>
+        <p style="display: flex; align-items: center; gap: 10px; margin-bottom: 0 !important"><i class="bi bi-caret-right-fill"></i>Mengintegrasikan fitur-fitur interaktif untuk meningkatkan keterlibatan pengguna.</p>
+        <p style="display: flex; align-items: center; gap: 10px; margin-bottom: 0 !important"><i class="bi bi-caret-right-fill"></i>Menyediakan ruang untuk berbagi informasi penting dan berguna kepada pengguna.</p>
+    </div>
+</section><!-- End Features Section -->
 @endsection

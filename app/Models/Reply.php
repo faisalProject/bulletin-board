@@ -10,5 +10,5 @@ class Reply extends Model
     use HasFactory;
 
     protected $table = 'replies';
-    protected $fillable = ['user_id', 'message_id', 'email', 'subject', 'reply'];
+    protected $fillable = ['user_id', 'username', 'message_id', 'email', 'subject', 'reply'];
 }

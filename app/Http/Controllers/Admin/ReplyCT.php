@@ -97,7 +97,8 @@ class ReplyCT extends Controller
     {
         $reply = $request->validated();
         $message = Message::find($id);
-        Reply::create($reply + ['user_id' => Auth::user()->id, 'message_id' => $message->id]);
+
+        Reply::create($reply + ['user_id' => Auth::user()->id, 'username' => Auth::user()->username, 'message_id' => $message->id]);
         Alert::success('Berhasil', 'Pesan berhasil dikirm!');
         Message::where('id', $id)->update(['status' => '1']);
         return redirect()->route('contact_admin_index');

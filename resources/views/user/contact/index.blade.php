@@ -38,23 +38,35 @@
                 <div class="info-item d-flex">
                 <i class="bi bi-geo-alt flex-shrink-0"></i>
                 <div>
-                    <h4>Location:</h4>
+                    <h4>Lokasi:</h4>
                     <p>A108 Adam Street, New York, NY 535022</p>
                 </div>
                 </div><!-- End Info Item -->
     
                 <div class="info-item d-flex">
-                <i class="bi bi-envelope flex-shrink-0"></i>
+                    <i class="bi bi-envelope-at"></i>
                 <div>
                     <h4>Email:</h4>
                     <p>info@example.com</p>
                 </div>
                 </div><!-- End Info Item -->
+
+                <div class="info-item d-flex">
+                    <i class="bi bi-envelope"></i>
+                <div>
+                    <h4>Kotak Masuk:</h4>
+                    @if ( $repliesCount != 0 )
+                        <a href="/replies/index" style="color: rgba(14, 29, 52, 0.8)">{{ $repliesCount }} Balasan</a>
+                    @else 
+                        <p>Tidak ada balasan</p>
+                    @endif
+                </div>
+                </div>
     
                 <div class="info-item d-flex">
                 <i class="bi bi-phone flex-shrink-0"></i>
                 <div>
-                    <h4>Call:</h4>
+                    <h4>No. Telepon:</h4>
                     <p>+1 5589 55488 55</p>
                 </div>
                 </div><!-- End Info Item -->

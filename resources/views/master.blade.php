@@ -55,6 +55,10 @@
   @endif
 
   <style>
+    span.tab {
+      margin-left: 40px
+    }
+
     .swal2-confirm {
       background-color: #4154f1 !important;
       color: #fff !important;
@@ -103,7 +107,7 @@
 
   @if ( Auth::user()->role === 'admin' )
     <!-- ======= Header ======= -->
-    <header id="header" class="header fixed-top d-flex align-items-center">
+    <header id="header" class="header fixed-top d-flex align-items-center" style="box-shadow: none !important; border-bottom: 1px solid #cddfff">
 
       <div class="d-flex align-items-center justify-content-between">
         <a href="/admin/dashboard/index" class="logo d-flex align-items-center">
@@ -286,7 +290,7 @@
               </li>
 
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <a class="dropdown-item d-flex align-items-center" href="#">
                   <i class="bi bi-person"></i>
                   <span>My Profile</span>
                 </a>
@@ -296,7 +300,7 @@
               </li>
 
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <a class="dropdown-item d-flex align-items-center" href="#">
                   <i class="bi bi-gear"></i>
                   <span>Account Settings</span>
                 </a>
@@ -306,7 +310,7 @@
               </li>
 
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                <a class="dropdown-item d-flex align-items-center" href="#">
                   <i class="bi bi-question-circle"></i>
                   <span>Need Help?</span>
                 </a>
@@ -334,7 +338,7 @@
     </header><!-- End Header -->
 
     <!-- ======= Sidebar ======= -->
-    <aside id="sidebar" class="sidebar">
+    <aside id="sidebar" class="sidebar" style="box-shadow: none !important; border-right: 1px solid #cddfff">
 
       <ul class="sidebar-nav" id="sidebar-nav">
 
@@ -383,7 +387,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="pages-faq.html">
+          <a class="nav-link collapsed" href="#">
             <i class="bi bi-question-circle"></i>
             <span>F.A.Q</span>
           </a>

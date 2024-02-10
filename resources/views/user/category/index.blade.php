@@ -35,17 +35,21 @@
           <div class="row gy-4">
             @foreach ($categories as $category)    
             <?php $content = \Illuminate\Support\Str::words(strip_tags($category->content), 20, '...') ?>
-              <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="card" style="min-height: 580px !important">
-                  <div class="card-img">
-                    <img style="height: 300px; object-fit: cover" src="{{ url($category->image) }}" alt="" class="img-fluid">
+              @if ( $category->image )
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                  <div class="card" style="min-height: 580px !important">
+                    <div class="card-img">
+                      <img style="height: 300px; object-fit: cover" src="{{ url($category->image) }}" alt="" class="img-fluid">
+                    </div>
+                    <h3><a href="/news/detail/{{ $category->id }}" class="stretched-link">{{ $category->title }}</a></h3>
+                    <p style="margin-bottom: 10px !important; color: #899bbd">{{ \Carbon\Carbon::parse($category->updated_at)->isoFormat('dddd, D MMMM YYYY') }}</p>
+                    <p style="margin-bottom: 10px !important; font-weight: 600">{{ $category->category_name }}</p>
+                    <p style="margin-bottom: 10px !important">{!! $content !!}</p>
                   </div>
-                  <h3><a href="/news/detail/{{ $category->id }}" class="stretched-link">{{ $category->title }}</a></h3>
-                  <p style="margin-bottom: 10px !important; color: #899bbd">{{ \Carbon\Carbon::parse($category->updated_at)->isoFormat('dddd, D MMMM YYYY') }}</p>
-                  <p style="margin-bottom: 10px !important; font-weight: 600">{{ $category->category_name }}</p>
-                  <p style="margin-bottom: 10px !important">{!! $content !!}</p>
                 </div>
-              </div>
+              @else 
+                <p style="font-weight: 600">Belum ada berita</p>
+              @endif
             @endforeach
   
             <div class="col-lg-4">

@@ -33,7 +33,7 @@
           <div class="services-list">
             <p style="font-weight: 600">Kategori Berita</p>
             @foreach ($categories as $category)
-              <a href="#">{{ $category->category_name }}</a>  
+              <a href="/category/index/{{ $category->category_name }}">{{ $category->category_name }}</a>  
             @endforeach
           </div>
           
@@ -57,7 +57,7 @@
               @if ( !$comments->isEmpty() )
                 @foreach ($comments as $comment)  
                   <li style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start">
-                    <p style="font-weight: 600; margin-bottom: 0 !important; display: flex; align-items: center; gap: 10px"><i class="bi bi-caret-right-fill" style="color: #899bbd"></i> {{ $comment->username }}</p>
+                    <p style="font-weight: 600; margin-bottom: 0 !important; display: flex; align-items: center; gap: 10px; cursor: pointer" class="username-comment"><i class="bi bi-caret-right-fill" style="color: #899bbd"></i> {{ $comment->username }}</p>
                     <p style="margin-bottom: 0 !important">{{ $comment->content }}</p>
                   </li>
                 @endforeach
@@ -82,3 +82,18 @@
     </div>
   </section><!-- End Service Details Section -->
 @endsection
+
+@push('scripts')
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+      var username_comment = document.querySelectorAll('.username-comment');
+      
+      username_comment ? username_comment.forEach((uc, i) => {
+        uc.addEventListener('click', () => {
+          // alert('ok');
+        })
+      }) : null;
+
+    })
+  </script>
+@endpush

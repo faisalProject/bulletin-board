@@ -3,28 +3,25 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User\MessageRequest;
-use App\Models\Message;
-use App\Models\Reply;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use RealRashid\SweetAlert\Facades\Alert;
-use Yajra\DataTables\Facades\DataTables;
 
-class MessageCT extends Controller
+class ReplyCT extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $repliesCount = DB::table('replies as r')
+
+        $replies = DB::table('replies as r')
+            ->select('r.id', 'r.reply', 'r.username', 'r.updated_at', 'm.id as message_id', 'm.user_id', 'm.email', 'm.subject', 'm.message')
             ->leftJoin('messages as m', 'r.message_id', '=', 'm.id')
             ->where('m.user_id', Auth::user()->id)
-            ->count();
-        return view('user.contact.index', compact('repliesCount'));
+            ->get();
+
+        return view('user.replies.index', compact('replies'));
     }
 
     /**
@@ -38,22 +35,15 @@ class MessageCT extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(MessageRequest $request)
+    public function store(Request $request)
     {
-        $message = $request->validated();
-        if ( strlen($request->input('subject')) > 50 ) {
-            Alert::error('Kata melebihi batas!');
-            return redirect()->back();
-        }
-        Message::create($message + ['user_id' => Auth::user()->id, 'status' => 0]);
-        Alert::success('Berhasil', 'Pesan berhasil dikirim!');
-        return redirect()->back();
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
         //
     }
